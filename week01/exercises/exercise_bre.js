@@ -33,3 +33,15 @@ for (let i = 0; i < NN + 2; i++) {
 console.log(scores)
 console.log(no_negative_scores)
 
+
+
+// Exercise 2.
+
+const names = "Luigi De Russis, Luca Mannella, Fulvio Corno, Juan Pablo Saenz Moreno, Enrico Masala, Antonio Servetti, Eros Fani".split(', ')
+
+const acronyms = names.map(n => n.split(' ').reduce((p, c) => p + c[0].toUpperCase(), ''))
+
+console.log(names)
+console.log(acronyms)
+console.log(acronyms.sort())
+
