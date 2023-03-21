@@ -1,0 +1,13 @@
+
+aside, footer {
+    background-color: darkmagenta;
+    color: white;
+}
+
+.question {
+    color: gray;
+}
+
+#bigger-margin {
+    margin-top: 4em;
+}
