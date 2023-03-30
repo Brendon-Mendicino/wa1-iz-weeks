@@ -12,13 +12,19 @@
     padding-top: 5rem;
 }
 
-ul.selectable-group li {
+.selectable-group * {
     background-color: transparent;
 }
 
-ul.selectable-group li:hover {
-    background-color: mediumblue;
+.selectable-group *:hover {
+    background-color: lightblue;
     color: white;
+}
+
+
+#filter-list {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 
