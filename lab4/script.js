@@ -1,6 +1,33 @@
 'use strict';
 
 
+function htmlToElement(html) {
+    var template = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
+
+/**
+ * returns a svg with an associated id
+ */
+function svgDeleteFilm(id, deleteCallback) {
+    const svg = htmlToElement('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>');
+    svg.addEventListener('click', event => {
+        deleteCallback(id);
+    });
+    return svg;
+}
+
+function removeChildWithId(id, parent) {
+    for (let i = 0; i < parent.children.length; i++) {
+        if (parent.children[i].id === id) {
+            parent.children[i].remove();
+            break;
+        }
+    }
+}
+
 function buildRating(id, parent, rating = null) {
     for (let i = 5; i >= 1; i--) {
         const inputId = id + i;
@@ -69,6 +96,16 @@ function FilmLibrary() {
     this.getLastMonth = () => [...this.films].filter(f => dayjs().diff(f.watchDate, 'month') === 1);
 
     this.getUnseen = () => [...this.films].filter(f => f.watchDate ? false : true);
+
+    this.deleteFilm = (title) => {
+        this.films = this.films.filter(f => f.title !== title);
+        this.listeners.forEach(l => l(title));
+    }
+
+    this.listeners = [];
+    this.addEventListener = (listener) => {
+        this.listeners.add(listener);
+    }
 };
 
 
@@ -81,6 +118,7 @@ function displayFilms(films) {
     films.forEach(f => {
         const li = document.createElement('li');
         li.className = "list-group-item";
+        li.id = f.title;
 
 
         const row = document.createElement('div');
@@ -89,7 +127,11 @@ function displayFilms(films) {
 
         const title = document.createElement('div');
         title.className = "col film-title";
-        title.innerText = f.title;
+        title.appendChild(svgDeleteFilm(f.title, id => {
+            removeChildWithId(id, ul);
+            library.deleteFilm(id);
+        }));
+        title.append(f.title);
         row.appendChild(title);
 
         const favorite = document.createElement('div');
@@ -158,7 +200,7 @@ function setFilterEvents(library) {
         filterEventListener(this.id);
         displayFilms(library.getUnseen());
     });
-}
+};
 
 
 

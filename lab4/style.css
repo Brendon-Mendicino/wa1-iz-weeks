@@ -82,3 +82,15 @@ ul.film-list > li input {
 .rating > input:checked ~ label:before {
     opacity: 1 !important;
 }
+
+.film-title > svg {
+    height: 2rem;
+    width: 2rem;
+    padding: 0.5rem;
+    border-radius: 10%;
+    margin: 0rem 1rem 0rem 1rem;
+}
+
+.film-title > svg:hover {
+    background-color: lightgray;
+}
