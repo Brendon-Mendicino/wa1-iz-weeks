@@ -1,26 +1,16 @@
-body, html {
-    height: 100%;
-    overflow: scroll;
-    scroll-behavior: smooth; 
+.vheight-100 {
+    min-height: 100vh;
 }
 
-
-
-
-aside {
-    position: sticky;
-    overflow: scroll;
-    scroll-behavior: smooth;
+/* Styles related to NavBar */
+.navbar-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-aside, main {
-    padding: 1rem;
-    height: 100%;
-    position: sticky;
-    overflow: auto;
-    scroll-behavior: smooth;
+.below-nav {
+    padding-top: 5rem;
 }
-
 
 ul.selectable-group li {
     background-color: transparent;
