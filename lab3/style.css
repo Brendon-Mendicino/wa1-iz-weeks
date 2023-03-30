@@ -1,0 +1,85 @@
+body, html {
+    height: 100%;
+    overflow: scroll;
+    scroll-behavior: smooth; 
+}
+
+
+
+
+aside {
+    position: sticky;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+aside, main {
+    padding: 1rem;
+    height: 100%;
+    position: sticky;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+
+ul.selectable-group li {
+    background-color: transparent;
+}
+
+ul.selectable-group li:hover {
+    background-color: mediumblue;
+    color: white;
+}
+
+
+.fab {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 2rem;
+    border-radius: 1rem;
+}
+
+
+ul.film-list > li {
+    padding: 1rem;
+}
+
+ul.film-list > li input {
+    margin: 0.5rem;
+}
+
+
+
+
+.rating {
+    transform: rotate(180deg);
+    text-align: start;
+}
+
+.rating > input {
+    display: none;
+}
+
+.rating > label {
+    transform: rotate(180deg);
+    font-size: larger;
+}
+
+.rating > label::before {
+    content: "★";
+    color: yellow;
+    position: absolute;
+    opacity: 0;
+}
+
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+    opacity: 1 !important;
+}
+
+
+.rating > input:checked ~ label:before {
+    opacity: 1 !important;
+}
