@@ -1,0 +1,9 @@
+
+form.new-answer > div {
+
+    margin-top: 0.5rem;
+}
+
+form.new-answer > button {
+    margin: 1rem;
+}
