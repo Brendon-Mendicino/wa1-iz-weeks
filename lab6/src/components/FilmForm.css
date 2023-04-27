@@ -1,0 +1,11 @@
+form.film-form > * > * {
+    margin-top: 0.5rem;
+}
+
+.film-form-button {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}
