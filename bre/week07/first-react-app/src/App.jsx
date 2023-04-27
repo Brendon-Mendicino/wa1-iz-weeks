@@ -24,6 +24,18 @@ function App() {
     });
   };
 
+  const addAnswer = (answer) => {
+    setAnswers(oldAns => {
+      return [...oldAns, answer];
+    });
+  };
+
+  const updateAnswer = (answer) => {
+    setAnswers(oldAns => {
+      return oldAns.map(a => a.id === answer.id ? answer : a);
+    });
+  };
+
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
@@ -33,7 +45,7 @@ function App() {
       <Container>
         <QuestionAsked question={fakeQuestion}></QuestionAsked>
         <br />
-        <Answers answers={answers} voteUp={voteUp}></Answers>
+        <Answers answers={answers} voteUp={voteUp} addAnswer={addAnswer} updateAnswer={updateAnswer}></Answers>
       </Container>
     </>
   );
