@@ -1,0 +1,38 @@
+.film-form-button {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.rating {
+    font-size: 1.3rem;
+}
+
+.rating > div.form-check {
+    margin: 0rem 0.2rem 0rem 0.2rem;
+    padding: 0;
+}
+
+
+/* hide radio button */
+.rating input {
+    display: none;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.rating label::before {
+    position: absolute;
+    content: '★';
+    opacity: 0;
+}
+
+.rating input:checked ~ label:before,
+.rating input:hover + label:before {
+    opacity: 1;
+    color: gold;
+}
