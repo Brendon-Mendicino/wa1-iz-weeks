@@ -42,7 +42,7 @@ function FilmMain(props) {
         to="film/add"
         relative="path"
         variant="primary"
-        className="film-form-button"
+        className="film-form-button btn btn-primary"
       >
         {addIcon}
       </Link>
